@@ -28,7 +28,7 @@ def homepage_view(request):
 
 
 """
-login, logout
+account, login, logout
 """
 
 
