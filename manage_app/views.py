@@ -1,4 +1,3 @@
-# from django.contrib.auth.models import User
 import json
 from datetime import date
 
@@ -72,7 +71,7 @@ def login_failed_view(request):
 
 
 def account_view(request):
-    # try:
+    try:
         print(request.session.get(SESSION, {}).get('id', {}))
         user_id = request.session.get(SESSION, {}).get('id', {})
         print(user_id)
@@ -86,9 +85,9 @@ def account_view(request):
         }
         print(context)
         return render(request, 'accounts/account.html', context)
-    # except Exception as ex:
-    #     print(ex)
-    #     return redirect('error_frame')
+    except Exception as ex:
+        print(ex)
+        return redirect('error_frame'))
 
 
 def logout_view(request):
@@ -115,30 +114,6 @@ def change_status(request):
             return JsonResponse({'success': True})
         except Client.DoesNotExist:
             return JsonResponse({'success': False, 'error': 'Client does not exist'})
-
-
-# def client_view(request, client_id):
-#     try:
-#         # print(client_id, user_id)
-#         user_id = request.session.get(SESSION, {}).get('id', {})
-#         user = User.objects.get(id=user_id)
-#         client = Client.objects.get(id=client_id, responsible_person=user)
-#         # if request.method == 'POST':
-#         #     form = UpdateClientStatusForm(request.POST)
-#         #     if form.is_valid():
-#         #         new_status = form.cleaned_data['status']
-#         #         client.status = new_status
-#         #         client.save()
-#         #     return redirect(request.path_info)
-#         print(client)
-#         context = {
-#             'client': client,
-#         }
-#         print(context)
-#         return render(request, 'clients/client.html', context)
-#     except Exception as ex:
-#         print(ex)
-#         return redirect('error_frame')
 
 
 """
