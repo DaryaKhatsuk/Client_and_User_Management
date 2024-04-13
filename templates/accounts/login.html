@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block page-content %}
+<head>
+  <title>Авторизация</title>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+  />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+</head>
+<body>
+  <form class="login-form" method="post">
+      {% csrf_token %}
+      <div class="login-block">
+        {{ form.username.label_tag }}
+        {{ form.username }}
+      </div>
+      <div class="login-block">
+        {{ form.password.label_tag }}
+        {{ form.password }}
+      </div>
+      <button class="submit-button" type="submit">Войти</button>
+    </form>
+</body>
+{% endblock %}

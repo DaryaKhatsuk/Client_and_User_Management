@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <title>Главная страница</title>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+  </head>
+  <body>
+    <div class="header-content">
+      <header>
+        {% if user %}
+        <div class="user-bar">
+          <div class="user-bar-logout">
+            <a title="Logout" href="{% url 'logout' %}">Выход</a>
+          </div>
+        </div>
+        {% else %}
+        <a class="user-login" href="{% url 'login' %}">Войти</a>
+        {% endif %}
+      </header>
+      {% block page-content %} {% endblock %}
+    </div>
+
+    <footer>
+      <a class="nav-bar-link" href="{% url 'support' %}"> Служба поддержки </a>
+    </footer>
+  </body>
+</html>

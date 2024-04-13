@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% extends 'base.html' %} {% load static %} {% block page-content %}
+<head>
+  <title>securemark.ru</title>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+  />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+</head>
+<body>
+  <form class="edit" method="post">
+    {% csrf_token %}
+    <div class="title">Обращение в техническую поддержку</div>
+    <div class="edit-flex">
+      {{ form.email.label_tag }} {{ form.email }}
+      {{ form.user_text.label_tag }} {{ form.user_text }}
+    </div>
+    <button class="sumbit-button" type="submit">Отправить</button>
+    </form>
+</body>
+{% endblock %}
